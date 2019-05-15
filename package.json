@@ -11,11 +11,12 @@
       }
     },
     "build": [
+      "chmod u+x configure install-sh",
       "find ./ -exec touch -t 200905010101 {} +",
       [
         "bash",
         "-c",
-        "#{os == 'windows' ? 'bash ./configure --prefix=$cur__install --host x86_64-w64-mingw32 --disable-dependency-tracking' : 'bash ./configure --prefix=$cur__install --disable-dependency-tracking'}"
+        "#{os == 'windows' ? './configure --prefix=$cur__install --host x86_64-w64-mingw32 --disable-dependency-tracking' : './configure --prefix=$cur__install --disable-dependency-tracking'}"
       ],
       [
         "make"
