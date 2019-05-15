@@ -1,0 +1,29 @@
+{
+  "name": "esy-pcre2",
+  "version": "2.10.33000",
+  "description": "Automake packaged for esy",
+  "esy": {
+    "buildsInSource": true,
+    "exportedEnv": {
+      "PKG_CONFIG_PATH": {
+        "scope": "global",
+        "val": "#{self.lib / 'pkgconfig' : $PKG_CONFIG_PATH }"
+      }
+    },
+    "build": [
+      "find ./ -exec touch -t 200905010101 {} +",
+      [
+        "bash",
+        "-c",
+        "#{os == 'windows' ? './configure --prefix=$cur__install --host x86_64-w64-mingw32 --disable-dependency-tracking' : './configure --prefix=$cur__install --disable-dependency-tracking'}"
+      ],
+      [
+        "make"
+      ],
+      [
+        "make",
+        "install"
+      ]
+    ]
+  }
+}
