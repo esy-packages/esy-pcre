@@ -8,6 +8,14 @@
       "PKG_CONFIG_PATH": {
         "scope": "global",
         "val": "#{self.lib / 'pkgconfig' : $PKG_CONFIG_PATH }"
+      },
+      "C_INCLUDE_PATH": {
+        "scope": "global",
+        "val": "#{self.install / 'include' : $C_INCLUDE_PATH}"
+      },
+      "LD_LIBRARY_PATH": {
+        "scope": "global",
+        "val": "#{self.lib : $LD_LIBRARY_PATH}"
       }
     },
     "build": [
